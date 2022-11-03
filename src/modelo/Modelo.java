@@ -1,0 +1,307 @@
+package modelo;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import control.Control;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaPlayer.Status;
+import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+
+public class Modelo {
+	public Modelo(List<File> lista_Canciones_Directorio) {
+		try {
+			
+			for(File a :  lista_Canciones_Directorio){
+				//System.out.println(f);
+				miAudio = new File(a.getAbsolutePath());
+				// System.out.println(miAudio.getName());
+				miMedia = new Media(miAudio.toURI().toString());
+
+				//array_Ruta.add(miAudio);
+				
+				array_Nombre_Musica.add(miAudio);
+				array_Nombre_Cancion.add(miAudio.getName().toString().toUpperCase());
+			 }
+				
+				
+		} catch (Exception e) {
+			
+			System.out.println("Fallo a la hora de descargar las canciones");
+		}
+	}
+//DEVUELVE LA POSICION DE LA CANCION ESCOGIDA POR EL USUARIO
+	public  int posicion(File a) {
+		posicion = array_Nombre_Musica.indexOf(a);
+		Almaceno_cancion_escogida= array_Nombre_Musica.get(posicion);
+		//System.out.println(posicion);
+		return  posicion;
+	}
+// ************************************************************************************************************************************************************************
+// ************************************************************************************************************************************************************************
+	/*
+	 *  MÉTODOS PARA AVANZAR LA CANCIÓN.
+	 *  1º MÉTODO--> ALMACENA LA POSICIÓN DE LA CANCIÓN.A CONTINUACIÓN LE SUMA UNA POSICIÓN.
+	 *  EL ARRAYLIST NOS PRESENTA LA POSICIÓN DE LA SEGUIENTE CANCIÓN.
+	 *  
+	 *  2º MÉTODO --> NOS MUESTRA EL NOMBRE DE LA CANCIÓN A SONAR.
+	 */
+	
+			
+	public File escoger() {
+		if (posicion < 0) {
+			posicion = posicion +1;
+		}
+		Almaceno_cancion_escogida= array_Nombre_Musica.get(posicion+1);
+		//System.out.println(Almaceno_cancion_escogida);
+		posicion = posicion + 1;
+		//System.out.println(posicion);
+		setId(posicion);
+		return Almaceno_cancion_escogida;
+	}
+	public File escoge_Nombre() {
+		posicion_nombre= posicion;
+		Almaceno_nombre_cancion_escogida= array_Nombre_Musica.get(posicion_nombre);
+		posicion_nombre= posicion_nombre + 1;
+		return Almaceno_nombre_cancion_escogida;
+	}
+
+// ************************************************************************************************************************************************************************
+// ************************************************************************************************************************************************************************
+/*
+ * MÉTODOS PARA ATRASAR LA CANCIÓN.
+ */
+	public File escoger_atras() {
+		
+		Almaceno_cancion_escogida= array_Nombre_Musica.get(posicion-1);
+		posicion = posicion - 1;
+		setId(posicion);
+		return Almaceno_cancion_escogida;
+	}
+	public File escoge_Nombre_atras() {
+		posicion_nombre= posicion;
+		Almaceno_nombre_cancion_escogida= array_Nombre_Musica.get(posicion_nombre);
+		posicion_nombre= posicion_nombre - 1;
+		//System.out.println(posicion_nombre);
+		return Almaceno_nombre_cancion_escogida;
+	}
+
+// ************************************************************************************************************************************************************************
+// ************************************************************************************************************************************************************************
+// MÉTODO PARA AÑADIR UNA O VARIAS CANCIONES A LA PLAYLIST
+	public void añadir_cancion(Stage primaryStage) {
+		/* -- ESTE MÉTODO ES EL ENCARGADO DE IR AÑADIENDO CANCIONES DESDE EL MENÚ DE LA APLICACIÓN:
+		 *    A) Emerge una ventana donde localizaremos la canción / canciones 	que deseamos añadir a la PlayList.
+		 *    B) Posteriormente pasa a evaluar si ya había alguna canción escogida en el ArrayList - Array_Añadir_musica() -. 
+		 *    En el supuesto que no exista ninguna,permite añadir la 1ª.
+		 *    
+		 *    C) En el siguiente condicional vuelve a evaluar si hay o no canciones. Si las hay, añade la última canción / canciones al array - en orden crónologico-.   
+		 */
+		FileChooser fileChooser = new FileChooser();
+		lista_Canciones_Directorio = fileChooser.showOpenMultipleDialog(primaryStage);
+		if(getArray_Añadir_musica().size() == 0) {
+			for(File x :  getArray_Nombre_Musica()) {
+				array_Añadir_musica.add(x);
+			}
+		}
+		
+		if(getArray_Añadir_musica().size() != 0) {
+			for(File t :  lista_Canciones_Directorio) {
+				array_Añadir_musica.add(t);
+			}
+		}
+		
+		setArray_Nombre_Musica(array_Añadir_musica);
+		
+	}
+// ************************************************************************************************************************************************************************
+// ************************************************************************************************************************************************************************
+// MÉTODO PARA BORRAR CANCIONES A LA PLAYLIST
+	public void borrar_cancion(int x) {
+		
+		getArray_Nombre_Musica().remove(x);
+		
+		
+	}
+// ************************************************************************************************************************************************************************
+// ************************************************************************************************************************************************************************
+// MÉTODO PARA PASAR DE UN ITEM SELECCIONADO EN LA OBSERVABLELIST AL SIGUIENTE
+	public String siguiente_item(String seleccionado) {
+		
+		seleccionado = array_Nombre_Musica.get(getPosicion()).getName();
+		//System.out.println(seleccionado + " " + getPosicion());
+		id = getPosicion();
+		return seleccionado ;
+		
+	}
+	
+	
+	
+// ************************************************************************************************************************************************************************
+// ************************************************************************************************************************************************************************
+// GETTERS Y SETTERS
+	
+	public File getFile() {
+		return file;
+	}
+	
+	public void setFile(File file) {
+		this.file = file;
+	}
+	
+	public File getMiAudio() {
+		return miAudio;
+	}
+	
+	public void setMiAudio(File miAudio) {
+		this.miAudio = miAudio;
+	}
+
+	public Media getMiMedia() {
+		return miMedia;
+	}
+	
+	public void setMiMedia(Media miMedia) {
+		this.miMedia = miMedia;
+	}
+	
+	public File[] getMis_archivos() {
+		return mis_archivos;
+	}
+	
+	public void setMis_archivos(File[] mis_archivos) {
+		this.mis_archivos = mis_archivos;
+	}
+	
+	public ArrayList<File> getArray_Nombre_Musica() {
+		return array_Nombre_Musica;
+	}
+	
+	public void setArray_Nombre_Musica(ArrayList<File> array_Nombre_Musica) {
+		this.array_Nombre_Musica = array_Nombre_Musica;
+	}
+	
+	public ArrayList<String> getArray_Nombre_Cancion() {
+		return array_Nombre_Cancion;
+	}
+	
+	public void setArray_Nombre_Cancion(ArrayList<String> array_Nombre_Cancion) {
+		this.array_Nombre_Cancion = array_Nombre_Cancion;
+	}
+	
+	public int getPosicion() {
+		return posicion;
+	}
+	
+	public void setPosicion(int posicion) {
+		this.posicion = posicion;
+	}
+	
+	public int getControl() {
+		return control;
+	}
+	
+	public void setControl(int control) {
+		this.control = control;
+	}
+	
+	public String getRuta_completa() {
+		return ruta_completa;
+	}
+	
+	public void setRuta_completa(String ruta_completa) {
+		this.ruta_completa = ruta_completa;
+	}
+	
+	public String getCadena_texto() {
+		return cadena_texto;
+	}
+	
+	public void setCadena_texto(String cadena_texto) {
+		this.cadena_texto = cadena_texto;
+	}
+	
+	public Status getStatus() {
+		return status;
+	}
+	
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
+	public String getRuta() {
+		return Ruta;
+	}
+	
+	public File getAlmaceno_cancion_escogida() {
+		return Almaceno_cancion_escogida;
+		
+		
+	}
+	
+	public void setAlmaceno_cancion_escogida(File almaceno_cancion_escogida) {
+		Almaceno_cancion_escogida = almaceno_cancion_escogida;
+	}
+	private void respuesta(ActionEvent e, MediaPlayer miPlayer) {
+		MenuItem item = (MenuItem) e.getSource();
+		//System.out.println("Has pulsado el botón" + " " + item.getText());
+
+		if (item.getText().equals("Nuevo")) {
+			System.out.println();
+
+			System.exit(0);
+		}
+
+	}
+	
+	public File getArchivo_añadir_cancion() {
+		return archivo_añadir_cancion;
+	}
+	public void setArchivo_añadir_cancion(File archivo_añadir_cancion) {
+		this.archivo_añadir_cancion = archivo_añadir_cancion;
+	}
+
+	public ArrayList<File> getArray_Añadir_musica() {
+		return array_Añadir_musica;
+	}
+	
+	public void setArray_Añadir_musica(ArrayList<File> array_Añadir_musica) {
+		this.array_Añadir_musica = array_Añadir_musica;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	private  Media miMedia;
+	private  File[] mis_archivos;
+	private  ArrayList<File> array_Nombre_Musica = new ArrayList();
+	private  ArrayList<File> array_Añadir_musica = new ArrayList();
+	private  ArrayList<String> array_Nombre_Cancion = new ArrayList();
+	private  final String Ruta = "/Volumes/NO NAME/JSP/FX_AUDIO_EJERCICIO/src/audio/";
+	private  int posicion, control,posicion_nombre,id;
+	private  String ruta_completa, cadena_texto,r;
+	private  Status status;
+	private  File file,miAudio,Almaceno_cancion_escogida,Almaceno_nombre_cancion_escogida,archivo_añadir_cancion,cancion_borrar;
+	private List<File> lista_Canciones_Directorio;
+
+}
