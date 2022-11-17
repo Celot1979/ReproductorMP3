@@ -16,11 +16,13 @@ import modelo.Modelo;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.SelectionModel;
 import javafx.scene.control.Slider;
@@ -51,6 +53,7 @@ public class Main extends Application {
 			FileChooser fileChooser = new FileChooser();
 			lista_Canciones_Directorio = fileChooser.showOpenMultipleDialog(primaryStage);
 			canciones_escogidas= new Modelo(lista_Canciones_Directorio);
+			dire = System.getProperty("user.dir") + "/";
 // ************************************************************************************************************************************************************************
 // ************************************************************************************************************************************************************************
 			//IMAGEN DE LA APLICACIÓN		
@@ -76,7 +79,31 @@ public class Main extends Application {
 			play = new Button();
 			play.setPrefSize(70, 50);
 			play.setGraphic(view);
-			play.setOnAction(e ->uno.play());
+			play.setOnAction(e -> {
+				// uno.play();
+				// uno.reproduccion_automatica(canciones_escogidas.getArray_Nombre_Musica());
+				if (!reproduccion_auto.isSelected()) {
+					uno.play();
+				} else {
+
+					// La implementacióm del objeto Control - uno - hace que funcionen los botones
+					// con la / as canciones que no adjunten del método - automatico - del objeto
+					// Modelo
+
+					/*canciones_escogidas.automatico(reproduccion_auto, uno, Lista_Vi, listado_canciones,
+							canciones_escogidas);
+					uno.play();*/
+					
+					for(File v:canciones_escogidas.getArray_Nombre_Musica()) {
+						
+					}
+					
+				
+
+				}
+
+			});
+			
 			
 			
 			  //-- BOTÓN PARA PAUSAR LA CANCIÓN
@@ -88,7 +115,10 @@ public class Main extends Application {
 			pause= new Button();
 			pause.setPrefSize(70, 50);
 			pause.setGraphic(view2);
-			pause.setOnAction(e -> uno.pause());
+			pause.setOnAction(e -> {
+				uno.pause();
+				
+			});
 			
 			  //-- BOTÓN PARA PARAR LA CANCIÓN
 			String mensaje3 = "file:/Volumes/NO NAME/JSP/FX_AUDIO_EJERCICIO/src/img/stop.png";
@@ -99,7 +129,10 @@ public class Main extends Application {
 			stop= new Button();
 			stop.setPrefSize(70, 50);
 			stop.setGraphic(view3);
-			stop.setOnAction(e ->uno.stop());
+			stop.setOnAction(e ->{
+				uno.stop();
+				//uno.cancelTimer();
+			});
 			
 			  //-- BOTÓN PARA AVANZAR LA CANCIÓN
 			String mensaje4 = "file:/Volumes/NO NAME/JSP/Reproductor/src/img/adelante.png";
@@ -111,12 +144,7 @@ public class Main extends Application {
 			siguiente.setPrefSize(70, 50);
 			siguiente.setGraphic(view4);
 			siguiente.setOnAction(e ->{
-				uno.stop();
-				uno= new Control(canciones_escogidas.escoger());
-				Lista_Vi.selectionModelProperty().get().select(canciones_escogidas.getId());
-				uno.play();
-				
-				listado_canciones.setText(canciones_escogidas.escoge_Nombre().getName());
+				metodo_adelantar();
 				
 				
 			});
@@ -136,10 +164,16 @@ public class Main extends Application {
 				Lista_Vi.selectionModelProperty().get().select(canciones_escogidas.getId());
 				uno.play();
 				listado_canciones.setText(canciones_escogidas.escoge_Nombre_atras().getName());
-				
+			
 				
 				
 			});
+// ************************************************************************************************************************************************************************
+// ************************************************************************************************************************************************************************
+// COMBOBOX PARA AUTOMATIZAR LA REPRODUCCIÓN DE LA PLAY LIST
+			 reproduccion_auto= new CheckBox("PLAY THE PLAYLIST AUTOMATICALLY");
+				
+
 			
 // ************************************************************************************************************************************************************************
 // ************************************************************************************************************************************************************************
@@ -178,7 +212,7 @@ public class Main extends Application {
 					nombre_borrar_cancion ="";
 					
 					list_Obser = Lista_Vi.getSelectionModel().getSelectedItems();
-					String dire = System.getProperty("user.dir") + "/";
+					
 					for (File i : list_Obser) {
 						try {
 							   // --- Se recorre la ObservableList donde está añadidas todas las canciones del ListView.
@@ -232,6 +266,16 @@ public class Main extends Application {
 			
 // ************************************************************************************************************************************************************************
 // ************************************************************************************************************************************************************************
+			
+			
+// ************************************************************************************************************************************************************************
+// ************************************************************************************************************************************************************************
+// SLIDER PARA PROGRESO DE LA CANCIÓN
+			songpro = new ProgressBar();
+			
+			
+// ************************************************************************************************************************************************************************
+// ************************************************************************************************************************************************************************			
 			//CÓDIGO PARA EL MENÚ
 			menuBar = new MenuBar();
 			menuBar.getStyleClass().add("Menu");
@@ -298,11 +342,16 @@ public class Main extends Application {
 			//CONTENEDORES PARA COLOCAR LOS COMPONENTES
 			HBox HORIZONTAL_MENU = new HBox(menuBar);
 		    HORIZONTAL_MENU.setAlignment(Pos.TOP_LEFT);
+		    //CONTENEDOR DEL LOGO DE LA APLICACIÓN
 			HBox HORIZONTAL_LOGO = new HBox(20, pho);
 			HORIZONTAL_LOGO.setAlignment(Pos.CENTER);
 			//CONTENEDORES PARA COLOCAR CONTROL DE VOLUMEN
 			HBox HORIZONTAL_VOLUMEN = new HBox(20,Volumen,vol);
 			HORIZONTAL_VOLUMEN.setAlignment(Pos.CENTER);
+			//CONTENEDORES PARA PROGRESSBAR
+			/*HBox HORIZONTAL_PROGRESSBAR= new HBox(20,songpro);
+			 HORIZONTAL_PROGRESSBAR.setAlignment(Pos.CENTER);*/
+			
 			//CONTENEDORES PARA COLOCAR LOS BOTONES
 			HBox HORIZONTAL_BOTONES = new HBox(20,atras,play,pause,siguiente,stop);
 			HORIZONTAL_BOTONES.setAlignment(Pos.CENTER);
@@ -312,9 +361,13 @@ public class Main extends Application {
 			//CONTENEDORES LISTAR LAS CANCIONES QUE ESTÁN EN EL DIRECTORIO
 			VBox VERTICAL_LISTADO_CANCIONES = new VBox(20,Lista_Vi);
 			VERTICAL_LISTADO_CANCIONES.setAlignment(Pos.CENTER);
+			//CONTENEDORES PARA COLOCAR EL CHECKBOX
+			VBox REPRODUCCION_AUTOMATICA = new VBox(20,Lista_Vi);
+			 REPRODUCCION_AUTOMATICA.setAlignment(Pos.CENTER);
+			 REPRODUCCION_AUTOMATICA.getChildren().add(reproduccion_auto);  
 			
 			//CONTIENE TODOS LOS COMPONENTES HORIZONTALES
-			VBox contenedor_vertical = new VBox(20,HORIZONTAL_MENU,HORIZONTAL_LOGO,HORIZONTAL_VOLUMEN,HORIZONTAL_BOTONES,HORIZONTAL_TITULO_CANCION, VERTICAL_LISTADO_CANCIONES);
+			VBox contenedor_vertical = new VBox(20,HORIZONTAL_MENU,HORIZONTAL_LOGO,HORIZONTAL_VOLUMEN,HORIZONTAL_BOTONES,HORIZONTAL_TITULO_CANCION, VERTICAL_LISTADO_CANCIONES, REPRODUCCION_AUTOMATICA);
 			contenedor_vertical.setAlignment(Pos.CENTER);
 			
 			scene = new Scene(contenedor_vertical, 550, 800);
@@ -331,7 +384,15 @@ public class Main extends Application {
 		launch(args);
 	}
 	
-	
+
+	public void metodo_adelantar() {
+		uno.stop();
+		uno= new Control(canciones_escogidas.escoger());
+		Lista_Vi.selectionModelProperty().get().select(canciones_escogidas.getId());
+		uno.play();
+		listado_canciones.setText(canciones_escogidas.escoge_Nombre().getName());
+	}
+
 	private Scene scene;
 	private ImageView pho;
 	private Image p;
@@ -339,8 +400,8 @@ public class Main extends Application {
 	private ListView<File> Lista_Vi;
 	private ListView<String> Lista_Ve;
 	private ObservableList<File> list_Obser;
-	private int list_situacion;
-	private String nombre_cancion_escogida,pasamos_nombre_cancion,nombre_borrar_cancion,nombre_cancion_escogida_quitar,Carpeta,test;
+	private int list_situacion,contador;
+	private String nombre_cancion_escogida,pasamos_nombre_cancion,nombre_borrar_cancion,nombre_cancion_escogida_quitar,Carpeta,test,dire;
 	//private Obtener_canciones canciones;
 	private Button play,pause,stop,siguiente,atras;
 	private int posicion,posicion_array,cancion_quitar;
@@ -353,5 +414,7 @@ public class Main extends Application {
 	private Menu Menu_Abrir_Archivo, Menu_Cerrar,Menu_informacion;
 	private MenuItem menuItemNuevo,menuItemInfo,menuItem_añadir_cancion,menuItem_quitar_cancion;
 	private List<File> lista_Canciones_Directorio;
+	private CheckBox reproduccion_auto;  
+	private ProgressBar songpro;
 	
 }
