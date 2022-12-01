@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import modelo.Modelo;
+import modelo.Temporizador;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -38,8 +39,32 @@ import javafx.geometry.Pos;
 
 
 public class Main extends Application {
+	private Scene scene;
+	private ImageView pho;
+	private Image p;
+	private Label nombre_cancion,volumen,listado_canciones;
+	private ListView<File> Lista_Vi;
+	private ListView<String> Lista_Ve;
+	private ObservableList<File> list_Obser;
+	private int list_situacion,contador;
+	private String nombre_cancion_escogida,pasamos_nombre_cancion,nombre_borrar_cancion,nombre_cancion_escogida_quitar,Carpeta,test,dire;
+	//private Obtener_canciones canciones;
+	private Button play,pause,stop,siguiente,atras;
+	private int posicion,posicion_array,cancion_quitar;
+	//private final String Ruta = "/Volumes/NO NAME/JSP/FX_AUDIO_EJERCICIO/src/audio/";
+	private File apunte,cancion_escogida_List_View,prueba2,prueba3,carperta;
+	private Modelo canciones_escogidas;
+	private Control uno,reproduccir;
+	private boolean control = false;
+	private MenuBar menuBar;
+	private Menu Menu_Abrir_Archivo, Menu_Cerrar,Menu_informacion;
+	private MenuItem menuItemNuevo,menuItemInfo,menuItem_añadir_cancion,menuItem_quitar_cancion;
+	private List<File> lista_Canciones_Directorio;
+	private CheckBox reproduccion_auto;  
+	private ProgressBar songpro;
+	private Temporizador Medir;
 	@Override
-	public void start(Stage primaryStage) {
+	public synchronized void start(Stage primaryStage) {
 		try {
 // ************************************************************************************************************************************************************************
 // ************************************************************************************************************************************************************************
@@ -89,17 +114,16 @@ public class Main extends Application {
 					// La implementacióm del objeto Control - uno - hace que funcionen los botones
 					// con la / as canciones que no adjunten del método - automatico - del objeto
 					// Modelo
-
-					/*canciones_escogidas.automatico(reproduccion_auto, uno, Lista_Vi, listado_canciones,
+					
+					canciones_escogidas.automatico(reproduccion_auto, uno, Lista_Vi, listado_canciones,
 							canciones_escogidas);
-					uno.play();*/
-					
-					for(File v:canciones_escogidas.getArray_Nombre_Musica()) {
-						
-					}
-					
-				
 
+					uno.play();
+					System.out.println(Thread.currentThread().getName() + " Main");
+					//uno.beginTimer();
+					uno.run();
+
+					
 				}
 
 			});
@@ -117,6 +141,7 @@ public class Main extends Application {
 			pause.setGraphic(view2);
 			pause.setOnAction(e -> {
 				uno.pause();
+				reproduccir.pause();
 				
 			});
 			
@@ -131,6 +156,8 @@ public class Main extends Application {
 			stop.setGraphic(view3);
 			stop.setOnAction(e ->{
 				uno.stop();
+				reproduccir.stop();
+				
 				//uno.cancelTimer();
 			});
 			
@@ -393,28 +420,6 @@ public class Main extends Application {
 		listado_canciones.setText(canciones_escogidas.escoge_Nombre().getName());
 	}
 
-	private Scene scene;
-	private ImageView pho;
-	private Image p;
-	private Label nombre_cancion,volumen,listado_canciones;
-	private ListView<File> Lista_Vi;
-	private ListView<String> Lista_Ve;
-	private ObservableList<File> list_Obser;
-	private int list_situacion,contador;
-	private String nombre_cancion_escogida,pasamos_nombre_cancion,nombre_borrar_cancion,nombre_cancion_escogida_quitar,Carpeta,test,dire;
-	//private Obtener_canciones canciones;
-	private Button play,pause,stop,siguiente,atras;
-	private int posicion,posicion_array,cancion_quitar;
-	//private final String Ruta = "/Volumes/NO NAME/JSP/FX_AUDIO_EJERCICIO/src/audio/";
-	private File apunte,cancion_escogida_List_View,prueba2,prueba3,carperta;
-	private Modelo canciones_escogidas;
-	private Control uno;
-	private boolean control = false;
-	private MenuBar menuBar;
-	private Menu Menu_Abrir_Archivo, Menu_Cerrar,Menu_informacion;
-	private MenuItem menuItemNuevo,menuItemInfo,menuItem_añadir_cancion,menuItem_quitar_cancion;
-	private List<File> lista_Canciones_Directorio;
-	private CheckBox reproduccion_auto;  
-	private ProgressBar songpro;
+
 	
 }
