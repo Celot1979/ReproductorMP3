@@ -151,20 +151,26 @@ public class Modelo {
 // ************************************************************************************************************************************************************************
 // ************************************************************************************************************************************************************************
 // MÉTODO PARA REPRODUCCIR AUTOMÁTICAMENTE LA PLAYLIST
+	
+	
+
+	
 	public void automatico(CheckBox reproduccion_auto,Control uno, ListView<File> Lista_Vi, Label Listado_canciones,
 			Modelo canciones_escogidas) {
 		int numero = array_Nombre_Musica.size();
 		if (reproduccion_auto.isSelected()) {
 			Almaceno_cancion_escogida = array_Nombre_Musica.get(id);
+			Listado_canciones.setText(Almaceno_cancion_escogida.getName());
+			Lista_Vi.selectionModelProperty().get().select(canciones_escogidas.getId());
+			
 			
 		}
-		Listado_canciones.setText(Almaceno_cancion_escogida.getName());
-		Lista_Vi.selectionModelProperty().get().select(canciones_escogidas.getId());
-		
-		
 	}
 	
-	
+	public void aut() {
+		System.out.println(Medir.getId());
+		System.out.println(Thread.currentThread().getName() + " modelo");
+	}
 	
 // ************************************************************************************************************************************************************************
 // ************************************************************************************************************************************************************************
@@ -272,17 +278,18 @@ public class Modelo {
 	private File[] mis_archivos;
 	private ArrayList<File> array_Nombre_Musica = new ArrayList();
 	private ArrayList<File> array_Añadir_musica = new ArrayList();
-
 	private final String Ruta = "/Volumes/NO NAME/JSP/FX_AUDIO_EJERCICIO/src/audio/";
 	private int posicion, pul, posicion_nombre,id,frame;
-	private String ruta_completa, cadena_texto, r;
+	private String ruta_completa, cadena_texto, r , hola;
 	private Status status;
 	private File file, miAudio, Almaceno_cancion_escogida, Almaceno_nombre_cancion_escogida, archivo_añadir_cancion,
 			cancion_borrar;
 	private List<File> lista_Canciones_Directorio;
+	private Temporizador Medir;
 	private TimerTask tarea;
 	private Timer tiempo;
 	private double current,end;
 	private boolean andando;
+	private Control uno;
 
 }
