@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
+
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -14,7 +16,7 @@ import modelo.Modelo;
 import modelo.Temporizador;
 
 
-public class Control implements Runnable{
+public class Control{
 	public Control(File a) {
 		try {
 			/*
@@ -57,44 +59,42 @@ public class Control implements Runnable{
 		
 	}
 	public void estado() {
-		Double  prueba = miPlayer.getCurrentTime().toSeconds();
-		System.out.println(prueba);
+		System.out.println(canciones_escogidas.getRuta());
 	}
 	//CON ESTOS DOS MÉTODOS PODEMOS SABER LA DURACIÓN DE LA CANCIÓN, PERO EL PROBLEMA ES QUE QUEDA ENCAPSULADO EN UN THREAD Y NO SE PUEDE HACER NADA FUERA DE AHÍ.
-//	public  void beginTimer() {
-//		
-//		Medir = new Temporizador(true);
-//		tiempo = new Timer();
-//		
-//		
-////		tarea = new TimerTask() {
-////			
-////		
-//////			public synchronized void run() {
-//////				andando = true;
-//////				
-//////				current = miPlayer.getCurrentTime().toSeconds();
-//////				end = miMedia.getDuration().toSeconds();
-//////				
-//////				if (current / end == 1.0) {
-//////					System.out.println(current/end);
-//////					Medir.setTemp(false);
-//////					Medir.isTemp();
-//////					Medir.setId(1);
-//////					frame = Medir.getId();
-//////					System.out.println(Thread.currentThread().getName() + " Control");
-//////					
-//////					cancelTimer();
-//////					
-//////					
-//////				}
-//////			}
-////		
-////		};
-//	
-//		//tiempo.scheduleAtFixedRate(tarea, 1000, 1000);
-//		
-//	}
+	public void beginTimer() {
+		Medir = new Temporizador(true);
+		tiempo = new Timer();
+		tarea = new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				andando = true;
+				current = miPlayer.getCurrentTime().toSeconds();
+
+				end = miMedia.getDuration().toSeconds();
+
+				if (current / end == 1.0) {
+					System.out.print(current / end);
+					Medir.setTemp(false);
+					Medir.isTemp();
+					Medir.setId(1);
+
+					frame = Medir.getId();
+					System.out.println(Thread.currentThread().getName() + " CONTROL");
+
+					cancelTimer();
+
+				}
+
+			}
+
+		};
+
+		tiempo.scheduleAtFixedRate(tarea, 1000, 1000);
+
+	}
 	public int resultado(int r) {
 		
 		return r;
@@ -106,7 +106,7 @@ public class Control implements Runnable{
 		
 	}
 
-	
+
 // ************************************************************************************************************************************************************************
 // ************************************************************************************************************************************************************************
 // MÉTODO DE REPRODUCCIÓN DE LAS LISTAS
@@ -164,7 +164,7 @@ public class Control implements Runnable{
 		this.res = res;
 	}
 
-
+	
 
 	private File a,Almaceno_cancion_escogida;
 	private Media miMedia;
@@ -180,26 +180,7 @@ public class Control implements Runnable{
 	
 	
 	
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		andando = true;
-
-		current = miPlayer.getCurrentTime().toSeconds();
-		end = miMedia.getDuration().toSeconds();
-		if (current / end == 1.0) {
-			System.out.println(current / end);
-			Medir.setTemp(false);
-			Medir.isTemp();
-			Medir.setId(1);
-			frame = Medir.getId();
-			System.out.println(Thread.currentThread().getName() + " Control");
-
-			cancelTimer();
-			
-		}
-		//tiempo.scheduleAtFixedRate(tarea, 1000, 1000);
-	}
+	
 	
 	
 
