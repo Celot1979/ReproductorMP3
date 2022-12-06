@@ -115,13 +115,10 @@ public class Main extends Application {
 					// con la / as canciones que no adjunten del método - automatico - del objeto
 					// Modelo
 					
-					canciones_escogidas.automatico(reproduccion_auto, uno, Lista_Vi, listado_canciones,
-							canciones_escogidas);
-
+					canciones_escogidas.automatico(reproduccion_auto, uno, Lista_Vi, listado_canciones, canciones_escogidas);
 					uno.play();
-					System.out.println(Thread.currentThread().getName() + " Main");
-					//uno.beginTimer();
-					uno.run();
+					uno.beginTimer();
+					
 
 					
 				}
@@ -420,6 +417,7 @@ public class Main extends Application {
 		listado_canciones.setText(canciones_escogidas.escoge_Nombre().getName());
 	}
 
+	
 
 	
 }
