@@ -39,7 +39,30 @@ import javafx.geometry.Pos;
 
 
 public class Main extends Application {
-	
+	private Scene scene;
+	private ImageView pho;
+	private Image p;
+	private Label nombre_cancion,volumen,listado_canciones;
+	private ListView<File> Lista_Vi;
+	private ListView<String> Lista_Ve;
+	private ObservableList<File> list_Obser;
+	private int list_situacion,contador;
+	private String nombre_cancion_escogida,pasamos_nombre_cancion,nombre_borrar_cancion,nombre_cancion_escogida_quitar,Carpeta,test,dire;
+	//private Obtener_canciones canciones;
+	private Button play,pause,stop,siguiente,atras;
+	private int posicion,posicion_array,cancion_quitar;
+	//private final String Ruta = "/Volumes/NO NAME/JSP/FX_AUDIO_EJERCICIO/src/audio/";
+	private File apunte,cancion_escogida_List_View,prueba2,prueba3,carperta;
+	private Modelo canciones_escogidas;
+	private Control uno,reproduccir;
+	private boolean control = false;
+	private MenuBar menuBar;
+	private Menu Menu_Abrir_Archivo, Menu_Cerrar,Menu_informacion;
+	private MenuItem menuItemNuevo,menuItemInfo,menuItem_añadir_cancion,menuItem_quitar_cancion;
+	private List<File> lista_Canciones_Directorio;
+	private CheckBox reproduccion_auto;  
+	private ProgressBar songpro;
+	private Temporizador Medir;
 	@Override
 	public synchronized void start(Stage primaryStage) {
 		try {
@@ -160,11 +183,8 @@ public class Main extends Application {
 			atras.setPrefSize(70, 50);
 			atras.setGraphic(view5);
 			atras.setOnAction(e ->{
-				uno.stop();
-				uno= new Control(canciones_escogidas.escoger_atras());
-				Lista_Vi.selectionModelProperty().get().select(canciones_escogidas.getId());
-				uno.play();
-				listado_canciones.setText(canciones_escogidas.escoge_Nombre_atras().getName());
+				
+				metodo_atrasar();
 			
 				
 				
@@ -386,31 +406,21 @@ public class Main extends Application {
 	}
 	
 
-	private Scene scene;
-	private ImageView pho;
-	private Image p;
-	private Label nombre_cancion,volumen,listado_canciones;
-	private ListView<File> Lista_Vi;
-	private ListView<String> Lista_Ve;
-	private ObservableList<File> list_Obser;
-	private int list_situacion,contador;
-	private String nombre_cancion_escogida,pasamos_nombre_cancion,nombre_borrar_cancion,nombre_cancion_escogida_quitar,Carpeta,test,dire;
-	//private Obtener_canciones canciones;
-	private Button play,pause,stop,siguiente,atras;
-	private int posicion,posicion_array,cancion_quitar;
-	//private final String Ruta = "/Volumes/NO NAME/JSP/FX_AUDIO_EJERCICIO/src/audio/";
-	private File apunte,cancion_escogida_List_View,prueba2,prueba3,carperta;
-	private Modelo canciones_escogidas;
-	private Control uno,reproduccir;
-	private boolean control = false;
-	private MenuBar menuBar;
-	private Menu Menu_Abrir_Archivo, Menu_Cerrar,Menu_informacion;
-	private MenuItem menuItemNuevo,menuItemInfo,menuItem_añadir_cancion,menuItem_quitar_cancion;
-	private List<File> lista_Canciones_Directorio;
-	private CheckBox reproduccion_auto;  
-	private ProgressBar songpro;
-	private Temporizador Medir;
-	
+	public void metodo_adelantar() {
+		uno.stop();
+		uno= new Control(canciones_escogidas.escoger());
+		Lista_Vi.selectionModelProperty().get().select(canciones_escogidas.getId());
+		uno.play();
+		listado_canciones.setText(canciones_escogidas.escoge_Nombre().getName());
+	}
+
+	public void metodo_atrasar() {
+		uno.stop();
+		uno = new Control(canciones_escogidas.escoger_atras());
+		Lista_Vi.selectionModelProperty().get().select(canciones_escogidas.getId());
+		uno.play();
+		listado_canciones.setText(canciones_escogidas.escoge_Nombre_atras().getName());
+	}
 
 	
 }
