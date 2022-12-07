@@ -46,6 +46,7 @@ public class Modelo {
 		} catch (Exception e) {
 
 			System.out.println("Fallo a la hora de descargar las canciones");
+			
 		}
 	}
 
@@ -68,19 +69,32 @@ public class Modelo {
 	 * 2º MÉTODO --> NOS MUESTRA EL NOMBRE DE LA CANCIÓN A SONAR.
 	 */
 
-	public File escoger() {
-		if (posicion < 0) {
+	public File proxima_cancion() {
+		try {
+			if (posicion < 0) {
+				posicion = posicion + 1;
+			}
+			Almaceno_cancion_escogida = array_Nombre_Musica.get(posicion + 1);
+			// System.out.println(Almaceno_cancion_escogida);
 			posicion = posicion + 1;
+			// System.out.println(posicion);
+			setId(posicion);
+		} catch (java.lang.IndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			/*
+			 * Capturamos el error de no tener más canciones al final de la Playlist
+			 */
+			posicion= 0;
+			Almaceno_cancion_escogida = array_Nombre_Musica.get(posicion);
+			setId(posicion);
 		}
-		Almaceno_cancion_escogida = array_Nombre_Musica.get(posicion + 1);
-		// System.out.println(Almaceno_cancion_escogida);
-		posicion = posicion + 1;
-		// System.out.println(posicion);
-		setId(posicion);
+		
+		
 		return Almaceno_cancion_escogida;
 	}
 
-	public File escoge_Nombre() {
+	public File nom_prox_cancion() {
 		posicion_nombre = posicion;
 		Almaceno_nombre_cancion_escogida = array_Nombre_Musica.get(posicion_nombre);
 		posicion_nombre = posicion_nombre + 1;
@@ -92,19 +106,26 @@ public class Modelo {
 	/*
 	 * MÉTODOS PARA ATRASAR LA CANCIÓN.
 	 */
-	public File escoger_atras() {
+	public File cancion_atras() {
 
-		Almaceno_cancion_escogida = array_Nombre_Musica.get(posicion - 1);
-		posicion = posicion - 1;
-		setId(posicion);
+		try {
+			Almaceno_cancion_escogida = array_Nombre_Musica.get(posicion - 1);
+			posicion = posicion - 1;
+			setId(posicion);
+		} catch (java.lang.IndexOutOfBoundsException e) {
+			posicion= array_Nombre_Musica.size()-1;
+			Almaceno_cancion_escogida = array_Nombre_Musica.get(posicion);
+			setId(posicion);
+		
+			
+		}
 		return Almaceno_cancion_escogida;
 	}
 
-	public File escoge_Nombre_atras() {
+	public File nom_atras_cancion() {
 		posicion_nombre = posicion;
 		Almaceno_nombre_cancion_escogida = array_Nombre_Musica.get(posicion_nombre);
 		posicion_nombre = posicion_nombre - 1;
-		// System.out.println(posicion_nombre);
 		return Almaceno_nombre_cancion_escogida;
 	}
 
@@ -291,5 +312,6 @@ public class Modelo {
 	private double current,end;
 	private boolean andando;
 	private Control uno;
+	private Stage primaryStage;
 
 }
