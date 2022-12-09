@@ -20,6 +20,7 @@ The player is open source with its public repository on GitHub https://github.co
 
 ## Instalación / Installation
 Cuando esl proyecto se de por finalizado habrá un archivo .jar para que se pueda implementar en cuaquier plataforma.
+
 When the project is finished there will be a .jar file so that it can be implemented on any platform.
 
 ## Uso de la aplicación por usuario
