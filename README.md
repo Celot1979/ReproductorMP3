@@ -27,5 +27,8 @@ Cuando esl proyecto se de por finalizado habrá un archivo .jar para que se pued
 ![Captura de pantalla 2022-12-09 a las 11 29 08](https://user-images.githubusercontent.com/67976795/206681920-cc8783b3-5724-47d6-9bd7-f75fd4bf558c.png)
  
  - Tendremos una nueva interfaz donde se nos mostrará las partes básicas del reproductor.
+   
+    <img width="544" alt="Captura de pantalla 2022-12-09 a las 11 38 24" src="https://user-images.githubusercontent.com/67976795/206683718-6fadd175-d83c-42c6-b2ed-a0f107b818e4.png">
+
   
   
