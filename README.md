@@ -1,4 +1,6 @@
-# REPRODUCTOR MP3 / $ \ color {# FF0000} {MP3 PLAYER}  $
+# REPRODUCTOR MP3 /  $ \ color {red} { MP3 PLAYER} $
+
+
 
 
 
