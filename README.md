@@ -1,23 +1,25 @@
-# REPRODUCTOR MP3 /  $ \ color {red} { MP3 PLAYER} $
+# REPRODUCTOR MP3 / MP3 PLAYER
 
 
 
 
 
-## REPRODUCTOR SIMPLE DE MP3
+## REPRODUCTOR SIMPLE DE MP3 / SIMPLE MP3 PLAYER
 [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
-## Tecnología 
+## Tecnología / Technology
 
-Reproductor MP3 consta de una tecnología básica:
+Reproductor MP3 consta de una tecnología básica: / MP3 player consists of a basic technology:
 - [Java] - Java FX
 - [CSS] -
 - [markdown-it] - Readme
 
 El reproductor es de código abierto con su repositorio público en GitHub https://github.com/Celot1979/ReproductorMP3.git
+The player is open source with its public repository on GitHub https://github.com/Celot1979/ReproductorMP3.git
 
-## Instalación
+## Instalación / Installation
 Cuando esl proyecto se de por finalizado habrá un archivo .jar para que se pueda implementar en cuaquier plataforma.
+When the project is finished there will be a .jar file so that it can be implemented on any platform.
 
 ## Uso de la aplicación por usuario
 - Al abrir el programa nos encontraremos que nos abre una ventana emergente para que le especiquemos dónde tenemos las canciones que deseamos implementar como una PlayList
