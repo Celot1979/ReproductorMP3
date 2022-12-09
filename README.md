@@ -10,4 +10,4 @@ Reproductor MP3 consta de una tecnología básica:
 - [CSS] -
 - [markdown-it] - Readme
 
-El reproductor es de código abierto con su repositorio público en GitHub.
+El reproductor es de código abierto con su repositorio público en GitHub (https://github.com/Celot1979/ReproductorMP3.git)
