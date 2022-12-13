@@ -37,6 +37,10 @@ When the project is finished there will be a .jar file so that it can be impleme
  - Tendremos una nueva interfaz donde se nos mostrará las partes básicas del reproductor.
    
  <img width="544" alt="Captura de pantalla 2022-12-09 a las 11 38 24" src="https://user-images.githubusercontent.com/67976795/206683718-6fadd175-d83c-42c6-b2ed-a0f107b818e4.png">
+ 
+ - Existe dos formas de interactuar con el reproductor:
+   - Automática : 
+   
+<img width="541" alt="Captura de pantalla 2022-12-13 a las 19 15 01" src="https://user-images.githubusercontent.com/67976795/207413763-809cddbb-ed1c-48f9-a261-c8a645a6daa0.png">
 
-  
   
