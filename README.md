@@ -45,13 +45,13 @@ When the project is finished there will be a .jar file so that it can be impleme
    
 <img width="541" alt="Captura de pantalla 2022-12-13 a las 19 15 01" src="https://user-images.githubusercontent.com/67976795/207413763-809cddbb-ed1c-48f9-a261-c8a645a6daa0.png">
   
-   - Manual :
+   - Manual / Manual:
   
-    - 1. Selecciona la canción deseada.
+    - 1. Selecciona la canción deseada / Select the desired song.
   
-    - 2. Presionamos el botón de Play.
+    - 2. Presionamos el botón de Play / We press the Play button.
   
-    - 3. El resto de botones irán haciendo su función con total normalidad.
+    - 3. El resto de botones irán haciendo su función con total normalidad / The rest of the buttons will perform their function normally.
   
   
   
