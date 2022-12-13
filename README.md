@@ -46,9 +46,13 @@ When the project is finished there will be a .jar file so that it can be impleme
 <img width="541" alt="Captura de pantalla 2022-12-13 a las 19 15 01" src="https://user-images.githubusercontent.com/67976795/207413763-809cddbb-ed1c-48f9-a261-c8a645a6daa0.png">
   
    - Manual :
+  
     - 1. Selecciona la canción deseada.
+  
     - 2. Presionamos el botón de Play.
+  
     - 3. El resto de botones irán haciendo su función con total normalidad.
+  
   
   
 <img width="544" alt="Captura de pantalla 2022-12-13 a las 19 27 51" src="https://user-images.githubusercontent.com/67976795/207429413-3f7bc32e-d69f-435b-a75d-317bf1e9f04f.png">
