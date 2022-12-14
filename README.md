@@ -24,8 +24,8 @@ Cuando esl proyecto se de por finalizado habrá un archivo .jar para que se pued
 When the project is finished there will be a .jar file so that it can be implemented on any platform.
 
 ## Uso de la aplicación por usuario
-- Al abrir el programa nos encontraremos que nos abre una ventana emergente para que le especiquemos dónde tenemos las canciones que deseamos implementar como una PlayList. 
-- When opening the program we will find that it opens a pop-up window for us to specify where we have the songs that we want to implement as a PlayList
+- Al abrir el programa nos encontraremos  una ventana emergente donde especiquemos la PlayList que deseamos implemetar. 
+- When opening the program we will find a pop-up window where we specify the PlayList that we want to implement.
 
 ![Captura de pantalla 2022-12-09 a las 11 24 53](https://user-images.githubusercontent.com/67976795/206681495-62a185c7-c41c-4e62-b9e3-24434de3e214.png)
 
@@ -35,8 +35,8 @@ When the project is finished there will be a .jar file so that it can be impleme
 
 ![Captura de pantalla 2022-12-09 a las 11 29 08](https://user-images.githubusercontent.com/67976795/206681920-cc8783b3-5724-47d6-9bd7-f75fd4bf558c.png)
  
- - Tendremos una nueva interfaz donde se nos mostrará las partes básicas del reproductor.
- - We will have a new interface where we will be shown the basic parts of the player.
+ - Tendremos una nueva interfaz con las partes básicas del reproductor.
+ - We will have a new interface with the basic parts of the player.
    
  <img width="544" alt="Captura de pantalla 2022-12-09 a las 11 38 24" src="https://user-images.githubusercontent.com/67976795/206683718-6fadd175-d83c-42c6-b2ed-a0f107b818e4.png">
  
