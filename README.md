@@ -59,10 +59,15 @@ When the project is finished there will be a .jar file so that it can be impleme
 
   ## Menú / Menu
   - En el menú superior tenemos 2 opciones / In the top menu we have 2 options:
+  
    -  Archivo / File :
+  
      - Añadir canción / Add song.
+  
      - Borrar canción / Delete song . * Canción seleccionada en la lista / Song selected in the list
+  
      - Salir de la aplicación / Exit application.
+  
   
 <img width="539" alt="Captura de pantalla 2022-12-14 a las 18 31 18" src="https://user-images.githubusercontent.com/67976795/207668447-9a660858-4cb1-40e9-abf0-fa13682c6eea.png">
 
