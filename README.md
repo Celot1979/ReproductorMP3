@@ -51,10 +51,18 @@ When the project is finished there will be a .jar file so that it can be impleme
   
     - 2. Presionamos el botón de Play / We press the Play button.
   
-    - 3. El resto de botones irán haciendo su función con total normalidad / The rest of the buttons will perform their function normally.
+    - 3. Cada botón tiene su evento programado que es fácil de detectar por la infografía / Each button has its scheduled event that is easy to spot from the infographic
   
   
   
 <img width="544" alt="Captura de pantalla 2022-12-13 a las 19 27 51" src="https://user-images.githubusercontent.com/67976795/207429413-3f7bc32e-d69f-435b-a75d-317bf1e9f04f.png">
 
+  ## Menú / Menu
+  - En el menú superior tenemos 2 opciones / In the top menu we have 2 options:
+   -  Archivo / File :
+     - Añadir canción / Add song.
+     - Borrar canción / Delete song . * Canción seleccionada en la lista / Song selected in the list
+     - Salir de la aplicación / Exit application.
   
+<img width="539" alt="Captura de pantalla 2022-12-14 a las 18 31 18" src="https://user-images.githubusercontent.com/67976795/207668447-9a660858-4cb1-40e9-abf0-fa13682c6eea.png">
+
