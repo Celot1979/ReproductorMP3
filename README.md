@@ -19,12 +19,12 @@ El reproductor es de código abierto con su repositorio público en GitHub https
 The player is open source with its public repository on GitHub https://github.com/Celot1979/ReproductorMP3.git
 
 ## Instalación / Installation
-Cuando esl proyecto se de por finalizado habrá un archivo .jar para que se pueda implementar en cuaquier plataforma.
+Cuando el proyecto se de por finalizado habrá un archivo .jar para que se pueda implementar en cuaquier plataforma.
 
 When the project is finished there will be a .jar file so that it can be implemented on any platform.
 
 ## Uso de la aplicación por usuario
-- Al abrir el programa nos encontraremos  una ventana emergente donde especiquemos la PlayList que deseamos implemetar. 
+- Al abrir el programa nos encontraremos  una ventana emergente donde especicaremos la PlayList que deseamos implementar. 
 - When opening the program we will find a pop-up window where we specify the PlayList that we want to implement.
 
 ![Captura de pantalla 2022-12-09 a las 11 24 53](https://user-images.githubusercontent.com/67976795/206681495-62a185c7-c41c-4e62-b9e3-24434de3e214.png)
@@ -40,7 +40,7 @@ When the project is finished there will be a .jar file so that it can be impleme
    
  <img width="544" alt="Captura de pantalla 2022-12-09 a las 11 38 24" src="https://user-images.githubusercontent.com/67976795/206683718-6fadd175-d83c-42c6-b2ed-a0f107b818e4.png">
  
- - Existe dos formas de interactuar con el reproductor / There are two ways to interact with the player:
+ - Existen dos formas de interactuar con el reproductor / There are two ways to interact with the player:
    - Automática / Automatic : 
    
 <img width="541" alt="Captura de pantalla 2022-12-13 a las 19 15 01" src="https://user-images.githubusercontent.com/67976795/207413763-809cddbb-ed1c-48f9-a261-c8a645a6daa0.png">
@@ -49,7 +49,7 @@ When the project is finished there will be a .jar file so that it can be impleme
   
     - 1. Selecciona la canción deseada / Select the desired song.
   
-    - 2. Presionamos el botón de Play / We press the Play button.
+    - 2. Presiona el botón Play / We press the Play button.
   
     - 3. Cada botón tiene su evento programado que es fácil de detectar por la infografía / Each button has its scheduled event that is easy to spot from the infographic
   
