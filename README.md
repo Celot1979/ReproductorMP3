@@ -19,9 +19,13 @@ El reproductor es de código abierto con su repositorio público en GitHub https
 The player is open source with its public repository on GitHub https://github.com/Celot1979/ReproductorMP3.git
 
 ## Instalación / Installation
-Cuando el proyecto se de por finalizado habrá un archivo .jar para que se pueda implementar en cuaquier plataforma.
+El archivo JAR es ejecuntado desde la terminal. Una vez que estemos en el directorio implentaremos la siguiente instrucción: 
 
-When the project is finished there will be a .jar file so that it can be implemented on any platform.
+> java --module-path  "Ruta donde esté el sdk y la carpeta lib  --add-modules javafx.controls,javafx.media,javafx.fxml -jar reproductorMp3-1.0.0.jar
+
+The JAR file is executed from the terminal. Once we are in the directory we will implement the following instruction:
+
+> java --module-path  "Ruta donde esté el sdk y la carpeta lib  --add-modules javafx.controls,javafx.media,javafx.fxml -jar reproductorMp3-1.0.0.jar
 
 ## Uso de la aplicación por usuario
 - Al abrir el programa nos encontraremos  una ventana emergente donde especicaremos la PlayList que deseamos implementar. 
